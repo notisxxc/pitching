@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <!-- Chosen Palette: Warm & Inviting (Customized) -->
+    <!-- Chosen Palette: Dynamic Reds -->
     <!-- Application Structure Plan: A narrative-driven, single-page application designed to guide parents through a persuasive argument. The structure flows from the big picture (the market opportunity) down to the specifics (the plan, the financials, the investment). It uses a combination of impactful text, interactive charts, and clear diagrams to make the pitch compelling and easy to digest. This structure was chosen over a simple slide replica to create an immersive, convincing experience that builds trust and excitement. Key interactions include toggling financial projections and exploring strategic pillars. -->
     <!-- Visualization & Content Choices: 
         1. Creator Economy Growth: Report Info -> Market size ($250B to $500B). Goal -> Show massive change. Viz -> Area Chart (Chart.js/Canvas). Interaction -> Animate on scroll. Justification -> Visually demonstrates the scale and momentum of the opportunity, making the abstract number tangible.
@@ -40,10 +40,10 @@
                 height: 400px;
             }
         }
-        .accent-bg { background-color: #D97706; } /* Amber */
-        .accent-text { color: #D97706; }
-        .accent-border { border-color: #D97706; }
-        .secondary-bg { background-color: #EFEBE5; } /* Light Beige */
+        .accent-bg { background-color: #E74C3C; } /* Vibrant Red */
+        .accent-text { color: #E74C3C; }
+        .accent-border { border-color: #E74C3C; }
+        .secondary-bg { background-color: #F2D7D5; } /* Light Red Tint */
         .card {
             background-color: #FFFFFF;
             border: 1px solid #EFEBE5;
@@ -60,7 +60,7 @@
             transition: color 0.3s;
         }
         .nav-link:hover {
-            color: #D97706;
+            color: #E74C3C;
         }
         .btn {
             padding: 0.75rem 1.5rem;
@@ -70,19 +70,19 @@
             cursor: pointer;
         }
         .btn-primary {
-            background-color: #D97706;
+            background-color: #E74C3C;
             color: #FFFFFF;
         }
         .btn-primary:hover {
-            background-color: #B45309;
+            background-color: #C0392B;
             transform: scale(1.05);
         }
         .btn-secondary {
-            background-color: #EFEBE5;
+            background-color: #F2D7D5;
             color: #3D352E;
         }
         .btn-secondary.active {
-            background-color: #3D352E;
+            background-color: #E74C3C;
             color: #FFFFFF;
         }
     </style>
@@ -100,13 +100,24 @@
                 <a href="#investment" class="nav-link font-semibold">Investment</a>
             </div>
         </div>
-    </na>
+    </nav>
 
     <main class="container mx-auto px-6 py-12 md:py-20">
 
-        <section id="hero" class="text-center mb-24">
+        <section id="hero" class="text-center mb-12">
             <h1 class="text-5xl md:text-7xl font-black mb-4">Our Future, <span class="accent-text">Unlocked</span></h1>
             <p class="text-xl md:text-2xl max-w-4xl mx-auto text-gray-600">Mom and Dad, this is a conversation about a transformative opportunity. It's a strategic plan to build a globally recognized, highly profitable career from right here in Rwanda, securing our family's future in the new digital world.</p>
+        </section>
+
+        <section id="audio-overview" class="mb-24 text-center">
+            <div class="card bg-gray-50 p-6">
+                <h2 class="text-2xl font-bold mb-4">Listen to the Overview</h2>
+                <audio controls class="w-full max-w-xl mx-auto">
+                    <source src="YOUR_AUDIO_OVERVIEW_URL_HERE.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p class="text-sm text-gray-500 mt-2">Please replace "YOUR_AUDIO_OVERVIEW_URL_HERE.mp3" with your actual audio file URL.</p>
+            </div>
         </section>
 
         <section id="opportunity" class="mb-24">
@@ -138,6 +149,7 @@
                 <div class="card">
                     <h3 class="font-bold text-xl mb-2 accent-text">Fierce Local Support</h3>
                     <p>Rwandans are incredibly proud and will champion quality local talent. This loyal base is the springboard for global recognition.</p>
+                {/* This is a comment */}
                 </div>
                 <div class="card">
                     <h3 class="font-bold text-xl mb-2 accent-text">Multilingual Superpower</h3>
@@ -249,10 +261,10 @@
 
     <script>
         const chartColors = {
-            primary: '#D97706', 
-            secondary: '#3D352E', 
-            text: '#3D352E', 
-            grid: 'rgba(61, 53, 46, 0.1)' 
+            primary: '#E74C3C', /* Vibrant Red */
+            secondary: '#C0392B', /* Darker Red */
+            text: '#3D352E', /* Dark Brown */
+            grid: 'rgba(61, 53, 46, 0.1)' /* Subtle grid lines */
         };
 
         const defaultChartOptions = {
@@ -299,7 +311,7 @@
                     label: 'Global Creator Economy Market Size (in Billion USD)',
                     data: [250, 310, 370, 430, 500],
                     borderColor: chartColors.primary,
-                    backgroundColor: 'rgba(217, 119, 6, 0.2)',
+                    backgroundColor: 'rgba(231, 76, 60, 0.2)',
                     fill: true,
                     tension: 0.4
                 }]
@@ -314,13 +326,13 @@
             datasets: [{
                 label: 'Conservative Estimate ($40k Total)',
                 data: [10000, 15000, 8000, 3000, 2000, 2000],
-                backgroundColor: 'rgba(217, 119, 6, 0.6)',
+                backgroundColor: 'rgba(231, 76, 60, 0.6)',
                 borderColor: chartColors.primary,
                 borderWidth: 1
             }, {
                 label: 'Optimistic Estimate ($150k Total)',
                 data: [35000, 60000, 30000, 10000, 5000, 10000],
-                backgroundColor: 'rgba(61, 53, 46, 0.6)',
+                backgroundColor: 'rgba(192, 57, 43, 0.6)',
                 borderColor: chartColors.secondary,
                 borderWidth: 1
             }]
@@ -330,13 +342,13 @@
             datasets: [{
                 label: 'Conservative Estimate ($250k Total)',
                 data: [150000, 40000, 35000, 15000, 10000],
-                backgroundColor: 'rgba(217, 119, 6, 0.6)',
+                backgroundColor: 'rgba(231, 76, 60, 0.6)',
                 borderColor: chartColors.primary,
                 borderWidth: 1
             }, {
                 label: 'Optimistic Estimate ($700k+ Total)',
                 data: [400000, 150000, 80000, 50000, 20000],
-                backgroundColor: 'rgba(61, 53, 46, 0.6)',
+                backgroundColor: 'rgba(192, 57, 43, 0.6)',
                 borderColor: chartColors.secondary,
                 borderWidth: 1
             }]
