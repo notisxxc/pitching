@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Pitch: A Global Digital Future from Rwanda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Chosen Palette: Warm & Inviting (Customized) -->
+    <!-- Application Structure Plan: A narrative-driven, single-page application designed to guide parents through a persuasive argument. The structure flows from the big picture (the market opportunity) down to the specifics (the plan, the financials, the investment). It uses a combination of impactful text, interactive charts, and clear diagrams to make the pitch compelling and easy to digest. This structure was chosen over a simple slide replica to create an immersive, convincing experience that builds trust and excitement. Key interactions include toggling financial projections and exploring strategic pillars. -->
+    <!-- Visualization & Content Choices: 
+        1. Creator Economy Growth: Report Info -> Market size ($250B to $500B). Goal -> Show massive change. Viz -> Area Chart (Chart.js/Canvas). Interaction -> Animate on scroll. Justification -> Visually demonstrates the scale and momentum of the opportunity, making the abstract number tangible.
+        2. Financial Projections: Report Info -> Year 1 & Year 3 income estimates. Goal -> Compare potential earnings over time. Viz -> Bar Chart (Chart.js/Canvas). Interaction -> Buttons to toggle between Year 1 and Year 3 data. Justification -> Clearly illustrates the exponential growth potential and long-term viability of the career path.
+        3. Content Strategy: Report Info -> Multi-platform content plan. Goal -> Organize a complex strategy. Viz -> Diagram (HTML/CSS/Tailwind). Interaction -> Static, clear visual flow. Justification -> Presents the interconnected ecosystem in an easy-to-understand format without needing prohibited SVG/Mermaid.
+        4. Career Path Comparison: Report Info -> Creator vs. Software Engineer. Goal -> Compare two paths. Viz -> Side-by-side text/stat blocks (HTML/CSS). Interaction -> None. Justification -> A direct, scannable comparison of key metrics (time, cost, income) is most effective for this point.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8; /* Warm White */
+            color: #3D352E; /* Dark Brown */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .accent-bg { background-color: #D97706; } /* Amber */
+        .accent-text { color: #D97706; }
+        .accent-border { border-color: #D97706; }
+        .secondary-bg { background-color: #EFEBE5; } /* Light Beige */
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #EFEBE5;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -2px rgba(0,0,0,0.04);
+        }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #D97706;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #D97706;
+            color: #FFFFFF;
+        }
+        .btn-primary:hover {
+            background-color: #B45309;
+            transform: scale(1.05);
+        }
+        .btn-secondary {
+            background-color: #EFEBE5;
+            color: #3D352E;
+        }
+        .btn-secondary.active {
+            background-color: #3D352E;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="font-black text-2xl accent-text">Our Future.</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#opportunity" class="nav-link font-semibold">The Opportunity</a>
+                <a href="#advantage" class="nav-link font-semibold">Our Advantage</a>
+                <a href="#plan" class="nav-link font-semibold">The Plan</a>
+                <a href="#financials" class="nav-link font-semibold">Financials</a>
+                <a href="#investment" class="nav-link font-semibold">Investment</a>
+            </div>
+        </div>
+    </na>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <section id="hero" class="text-center mb-24">
+            <h1 class="text-5xl md:text-7xl font-black mb-4">Our Future, <span class="accent-text">Unlocked</span></h1>
+            <p class="text-xl md:text-2xl max-w-4xl mx-auto text-gray-600">Mom and Dad, this is a conversation about a transformative opportunity. It's a strategic plan to build a globally recognized, highly profitable career from right here in Rwanda, securing our family's future in the new digital world.</p>
+        </section>
+
+        <section id="opportunity" class="mb-24">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold">The Digital Gold Rush: A New Global Economy</h2>
+                <p class="text-lg max-w-3xl mx-auto mt-4 text-gray-600">The "Creator Economy" is not a hobby; it's one of the fastest-growing industries on the planet. It's a legitimate, multi-billion dollar market where authentic voices can build global businesses.</p>
+            </div>
+            <div class="card">
+                 <div class="chart-container">
+                    <canvas id="creatorEconomyChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="advantage" class="mb-24">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold">Why Rwanda is the <span class="accent-text">Perfect Launchpad</span></h2>
+                <p class="text-lg max-w-3xl mx-auto mt-4 text-gray-600">Our home offers a unique combination of advantages that makes success here not just possible, but highly probable. It's an unfair advantage that creators elsewhere can only dream of.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card">
+                    <h3 class="font-bold text-xl mb-2 accent-text">Untapped Market</h3>
+                    <p>Less competition means a clearer path to becoming a leading voice. We can capture attention faster than in saturated markets like the US or India.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-bold text-xl mb-2 accent-text">"First Rwandan" Buzz</h3>
+                    <p>Pioneering new content formats here is inherently newsworthy. This generates free, organic publicity that others pay fortunes to acquire.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-bold text-xl mb-2 accent-text">Fierce Local Support</h3>
+                    <p>Rwandans are incredibly proud and will champion quality local talent. This loyal base is the springboard for global recognition.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-bold text-xl mb-2 accent-text">Multilingual Superpower</h3>
+                    <p>Creating in English unlocks a global audience of billions, a critical differentiator for international monetization and impact.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan" class="mb-24">
+             <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold">The Blueprint: A Multi-Platform <span class="accent-text">Domination Strategy</span></h2>
+                <p class="text-lg max-w-3xl mx-auto mt-4 text-gray-600">This isn't about just one platform. It's a carefully designed ecosystem where each platform serves a specific purpose to maximize reach, engagement, and sustainable growth.</p>
+            </div>
+            <div class="card p-8">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold mb-2">Core Content Engine</h3>
+                        <div class="space-y-2">
+                           <p><strong>Long-Form (YouTube):</strong> Vlogs, Cooking, Fitness, Deep Talks.</p>
+                           <p><strong>Live Interaction (Twitch/YouTube):</strong> Gaming, Reactions, Community Chat.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-5xl font-black accent-text transform rotate-90 md:rotate-0">&rarr;</div>
+
+                    <div class="text-center">
+                         <h3 class="text-2xl font-bold mb-2">Content Distribution</h3>
+                         <p class="mb-4">A dedicated friend will clip moments from the core content, creating a constant stream of short-form videos.</p>
+                         <div class="w-full h-1 bg-gray-200 rounded-full"></div>
+                    </div>
+
+                    <div class="text-5xl font-black accent-text transform rotate-90 md:rotate-0">&rarr;</div>
+                    
+                    <div class="text-center md:text-right">
+                        <h3 class="text-2xl font-bold mb-2">Audience Growth Platforms</h3>
+                        <div class="space-y-2">
+                           <p><strong>Short Form (TikTok, IG Reels, YT Shorts):</strong> For rapid discovery and viral reach.</p>
+                           <p><strong>Community Hub (X, Instagram):</strong> For daily updates and direct engagement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="financials" class="mb-24">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold">The Financials: From Seed to <span class="accent-text">Avalanche</span></h2>
+                <p class="text-lg max-w-3xl mx-auto mt-4 text-gray-600">This path offers not just a living, but a route to life-changing financial security and generational wealth. The growth potential is exponential.</p>
+                <div class="mt-8 flex justify-center space-x-4">
+                    <button id="year1Btn" class="btn btn-secondary active">Year 1 Projections</button>
+                    <button id="year3Btn" class="btn btn-secondary">Year 3 Projections</button>
+                </div>
+            </div>
+             <div class="card">
+                <div class="chart-container">
+                    <canvas id="financialsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison" class="mb-24">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold">A Clearer Path: <span class="accent-text">Passion vs. Convention</span></h2>
+                <p class="text-lg max-w-3xl mx-auto mt-4 text-gray-600">When compared to a conventional path like software engineering, the advantages of this creator career become even more clear, both in terms of financial timeline and personal fulfillment.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card border-l-4 accent-border">
+                    <h3 class="text-2xl font-bold mb-4">Content Creator Path</h3>
+                    <ul class="space-y-3 list-inside">
+                        <li><span class="font-bold">Income Start:</span> Year 1</li>
+                        <li><span class="font-bold">Investment:</span> Passion, Time, Initial Equipment</li>
+                        <li><span class="font-bold">Growth:</span> Direct control, global market access</li>
+                        <li><span class="font-bold">Work:</span> Aligned with personal passion, life becomes content</li>
+                        <li><span class="font-bold">Fulfillment:</span> Building a personal brand and legacy</li>
+                    </ul>
+                </div>
+                <div class="card border-l-4 border-gray-300">
+                    <h3 class="text-2xl font-bold mb-4">Conventional Path (e.g., Software Eng.)</h3>
+                    <ul class="space-y-3 list-inside">
+                        <li><span class="font-bold">Income Start:</span> Year 4-5 (after university + job search)</li>
+                        <li><span class="font-bold">Investment:</span> High tuition fees, 4+ years of no income</li>
+                        <li><span class="font-bold">Growth:</span> Dependent on local job market and corporate ladders</li>
+                        <li><span class="font-bold">Work:</span> Constant learning of required tech, potential for burnout</li>
+                        <li><span class="font-bold">Fulfillment:</span> Can be limited by corporate structure</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="investment" class="text-center secondary-bg rounded-lg p-10 md:p-16">
+            <h2 class="text-4xl font-bold">The Strategic Investment</h2>
+            <p class="text-lg max-w-3xl mx-auto mt-4 text-gray-600">To launch this venture with the quality and consistency it deserves, a definitive initial investment is required. This isn't an expense; it's the seed capital for our family's future enterprise.</p>
+            <div class="my-8">
+                <span class="text-6xl md:text-8xl font-black accent-text">$5,100</span>
+                <span class="text-2xl font-bold">USD</span>
+            </div>
+            <p class="text-gray-600">This covers the high-performance PC, professional monitors, and accessories that form the engine of this digital business.</p>
+        </section>
+
+        <section id="conclusion" class="text-center mt-24">
+             <h2 class="text-4xl font-bold">This is More Than a Dream; <br/> It's a <span class="accent-text">Strategic Vision</span></h2>
+             <p class="text-xl max-w-3xl mx-auto mt-6 text-gray-600">By supporting me now, you are co-founding a pioneering venture, a global platform, and a legacy of courage and innovation for our family. Let's build this extraordinary future together.</p>
+             <div class="mt-10">
+                <a href="#hero" class="btn btn-primary">Let's Begin This Journey</a>
+             </div>
+        </section>
+
+    </main>
+
+    <script>
+        const chartColors = {
+            primary: '#D97706', 
+            secondary: '#3D352E', 
+            text: '#3D352E', 
+            grid: 'rgba(61, 53, 46, 0.1)' 
+        };
+
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: '#3D352E',
+                    titleFont: { size: 16, weight: 'bold' },
+                    bodyFont: { size: 14 },
+                    padding: 12,
+                    cornerRadius: 6,
+                    displayColors: true,
+                    callbacks: {
+                        title: (tooltipItems) => {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            return Array.isArray(label) ? label.join(' ') : label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: chartColors.text, font: { size: 12 } },
+                    grid: { color: chartColors.grid },
+                    beginAtZero: true
+                },
+                x: {
+                    ticks: { color: chartColors.text, font: { size: 12 } },
+                    grid: { display: false }
+                }
+            }
+        };
+
+        // Creator Economy Chart
+        const creatorEconomyCtx = document.getElementById('creatorEconomyChart').getContext('2d');
+        new Chart(creatorEconomyCtx, {
+            type: 'line',
+            data: {
+                labels: ['2023', '2024', '2025', '2026', '2027 (Proj.)'],
+                datasets: [{
+                    label: 'Global Creator Economy Market Size (in Billion USD)',
+                    data: [250, 310, 370, 430, 500],
+                    borderColor: chartColors.primary,
+                    backgroundColor: 'rgba(217, 119, 6, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: { ...defaultChartOptions }
+        });
+
+        // Financials Chart
+        const financialsCtx = document.getElementById('financialsChart').getContext('2d');
+        const year1Data = {
+            labels: ['YouTube Ads', 'Brand Deals', 'Twitch Subs', 'Affiliates', 'Bonuses', 'Direct Support'],
+            datasets: [{
+                label: 'Conservative Estimate ($40k Total)',
+                data: [10000, 15000, 8000, 3000, 2000, 2000],
+                backgroundColor: 'rgba(217, 119, 6, 0.6)',
+                borderColor: chartColors.primary,
+                borderWidth: 1
+            }, {
+                label: 'Optimistic Estimate ($150k Total)',
+                data: [35000, 60000, 30000, 10000, 5000, 10000],
+                backgroundColor: 'rgba(61, 53, 46, 0.6)',
+                borderColor: chartColors.secondary,
+                borderWidth: 1
+            }]
+        };
+        const year3Data = {
+            labels: ['Premium Brand Deals', 'Merchandise', 'YouTube Ads', 'Speaking Fees', 'Other Streams'],
+            datasets: [{
+                label: 'Conservative Estimate ($250k Total)',
+                data: [150000, 40000, 35000, 15000, 10000],
+                backgroundColor: 'rgba(217, 119, 6, 0.6)',
+                borderColor: chartColors.primary,
+                borderWidth: 1
+            }, {
+                label: 'Optimistic Estimate ($700k+ Total)',
+                data: [400000, 150000, 80000, 50000, 20000],
+                backgroundColor: 'rgba(61, 53, 46, 0.6)',
+                borderColor: chartColors.secondary,
+                borderWidth: 1
+            }]
+        };
+
+        const financialChartConfig = {
+            type: 'bar',
+            data: year1Data,
+            options: {
+                ...defaultChartOptions,
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { color: chartColors.text }
+                    }
+                }
+            }
+        };
+
+        const financialsChart = new Chart(financialsCtx, financialChartConfig);
+
+        const year1Btn = document.getElementById('year1Btn');
+        const year3Btn = document.getElementById('year3Btn');
+        
+        year1Btn.addEventListener('click', () => {
+            financialsChart.data = year1Data;
+            financialsChart.update();
+            year1Btn.classList.add('active');
+            year3Btn.classList.remove('active');
+        });
+
+        year3Btn.addEventListener('click', () => {
+            financialsChart.data = year3Data;
+            financialsChart.update();
+            year3Btn.classList.add('active');
+            year1Btn.classList.remove('active');
+        });
+
+    </script>
+</body>
+</html>
